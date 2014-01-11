@@ -1,6 +1,4 @@
-#!/usr/bin/env python
-#
-#  bbusage-cli.py: Display remaining broadband data usage VAS portal.
+#  utils.py: shared calculations and formatting for bbusage
 #  Copyright 2014 Sudaraka Wijesinghe <sudaraka.org/contact>
 #
 #  This program is free software: you can redistribute it and/or modify
@@ -16,21 +14,22 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#  USAGE: bbusage-cli.py <vas_portal_username> <password>
-#
-#  DISCLAIMER:
-#  General public is encourage NOT to use this code for financial gain or any
-#  form of act that will result in harm to any person or company. Author will
-#  NOT be responsible of such actions of the user.
-#
 
 
-from bbusage.portal import Portal
-from bbusage.utils import metric_bytes
+def metric_bytes(byte_value):
+    """ (int) -> dict
 
-# Start main application
-if '__main__' == __name__:
-    p = Portal()
-    p.authnticate('mhg2847002', '')
-    x = p.get_profile()
-    print(metric_bytes(int(x['totalrem'])))
+    Return the given byte value as metric unit and value in a dict.
+
+    """
+
+    units = ['b', 'K', 'M', 'G', 'T']
+
+    while 1024 < byte_value:
+        byte_value /= 1024.0
+        units.pop(0)
+
+        if 1 >= len(units):
+            break
+
+    return {'value': byte_value, 'unit': units[0]}
