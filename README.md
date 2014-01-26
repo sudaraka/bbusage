@@ -9,9 +9,9 @@ Copyright 2012,2014 [Sudaraka Wijesinghe] [url_contact].
 Scripts
 -------
 
-| bbusage-cli.py    | Display the remaining peak/off-peak usage and possible daily usage remaining for rest of the month.                           |
-| bbusage-i3.py     | Output just the smallest remaining (of peak/off-peak) usage, to be used with i3bar of i3wm via conky.                         |
-| bbusage-legacy.py | (_this script is not usable after the 2014-01-02 upstream changes_) Display(ed) current usage and usage from previous months. |
+* __bbusage-cli.py__ - Display the remaining peak/off-peak usage and possible daily usage remaining for rest of the month.
+* __bbusage-i3.py__ - Output just the smallest remaining (of peak/off-peak) usage, to be used with i3bar of i3wm via conky.
+* __bbusage-legacy.py__ - (_this script is not usable after the 2014-01-02 upstream changes_) Display(ed) current usage and usage from previous months.
 
 License
 -------
