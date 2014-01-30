@@ -84,7 +84,7 @@ under certain conditions under GNU GPLv3 or later.
     remaining_minutes_today = (23 - datetime.now().hour) * 60
     remaining_minutes_today += 59 - datetime.now().minute
 
-    min_usage = int(min([data['totalrem'], data['peakrem']]))
+    min_usage = min([int(data['totalrem']), int(data['peakrem'])])
     per_minute_usage = min_usage / (remaining_minutes_today + (remaining_days * 24 * 60))
 
     # Print result
