@@ -110,10 +110,11 @@ under certain conditions under GNU GPLv3 or later.
                             ('%.2f' % tmp['value']).rjust(COL_WIDTH[1]),
                             tmp['unit']))
 
-    tmp = metric_bytes(per_minute_usage * 24 * 60)
-    print('| %s | %s%s |' % ((' - Following %2d days (each)' % remaining_days).ljust(COL_WIDTH[0]),
-                            ('%.2f' % tmp['value']).rjust(COL_WIDTH[1]),
-                            tmp['unit']))
+    if 0 < remaining_days:
+        tmp = metric_bytes(per_minute_usage * 24 * 60)
+        print('| %s | %s%s |' % ((' - Following %2d days (each)' %
+                remaining_days).ljust(COL_WIDTH[0]), ('%.2f' %
+                tmp['value']).rjust(COL_WIDTH[1]), tmp['unit']))
 
     print('+' + ('-' * (sum(COL_WIDTH) + 6)) + '+')
     print('')
